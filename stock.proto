@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package decorcastle;
+
+message Stock {
+  int32 id = 1;
+  int32 product_type_id = 2;
+  optional string product_name = 3;
+  string product_number = 4;
+  optional string company = 5;
+  optional string thickness = 6;
+  optional string width = 7;
+  optional string height = 8;
+  int32 amount_present = 9;
+  optional float unit_price = 10;
+  string created_at = 11;
+  string updated_at = 12;
+  optional string last_ordered_at = 13;
+}
+
+message CreateStockRequest {
+  int32 product_type_id = 1;
+  optional string product_name = 2;
+  string product_number = 3;
+  optional string company = 4;
+  optional string thickness = 5;
+  optional string width = 6;
+  optional string height = 7;
+  int32 amount_present = 8;
+  optional float unit_price = 9;
+}
+
+message BatchCreateStockRequest {
+  repeated CreateStockRequest items = 1;
+}
+
+message UpdateStockRequest {
+  optional int32 product_type_id = 1;
+  optional string product_name = 2;
+  optional string product_number = 3;
+  optional string company = 4;
+  optional string thickness = 5;
+  optional string width = 6;
+  optional string height = 7;
+  optional int32 amount_present = 8;
+  optional float unit_price = 9;
+}
