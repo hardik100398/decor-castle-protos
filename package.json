@@ -2,15 +2,19 @@
   "name": "decor-castle-protos",
   "version": "0.1.0",
   "description": "Protocol Buffer definitions for the Decor Castle application",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "generate:ts": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./generated/ts/ ./*.proto",
     "generate:py": "protoc --python_out=./generated/py/ ./*.proto",
-    "generate": "npm run generate:ts && npm run generate:py"
+    "generate": "yarn generate:ts && yarn generate:py",
+    "build": "tsc",
+    "prepare": "yarn build"
   },
   "devDependencies": {
     "protobufjs": "^7.2.4",
-    "ts-proto": "^1.156.3"
+    "ts-proto": "^1.156.3",
+    "typescript": "^5.1.6"
   },
   "keywords": [
     "protobuf",

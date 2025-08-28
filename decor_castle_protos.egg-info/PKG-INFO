@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: decor_castle_protos
+Version: 0.1.0
+Summary: Protocol Buffer definitions for Decor Castle
+Author: 
+Author-email: 
+Requires-Python: >=3.7
+Requires-Dist: protobuf>=3.19.0
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary

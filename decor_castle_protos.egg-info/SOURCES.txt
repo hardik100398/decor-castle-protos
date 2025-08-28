@@ -1,0 +1,9 @@
+README.md
+setup.py
+decor_castle_protos.egg-info/PKG-INFO
+decor_castle_protos.egg-info/SOURCES.txt
+decor_castle_protos.egg-info/dependency_links.txt
+decor_castle_protos.egg-info/requires.txt
+decor_castle_protos.egg-info/top_level.txt
+generated/py/__init__.py
+generated/py/stock_pb2.py
