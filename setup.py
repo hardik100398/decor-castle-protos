@@ -31,7 +31,7 @@ class CompileProtoCommand(Command):
             else:
                 print("Warning: compile_protos.sh not found.")
                 # Try direct protoc command
-                subprocess.check_call(['protoc', '--python_out=./generated/py/', './*.proto'])
+                subprocess.check_call(['protoc', '--python_out=./decor_castle_protos/', './*.proto'])
         except subprocess.CalledProcessError as e:
             print(f"Warning: Failed to compile proto files: {e}")
             print("Installation will continue, but generated files may be missing.")
@@ -45,7 +45,6 @@ setup(
     description="Protocol Buffer definitions for Decor Castle",
     author="",
     author_email="",
-    package_dir={"decor_castle_protos": "generated/py"},
     packages=["decor_castle_protos"],
     python_requires=">=3.7",
     install_requires=[
