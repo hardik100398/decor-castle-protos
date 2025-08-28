@@ -2,32 +2,38 @@ syntax = "proto3";
 
 package decorcastle;
 
+option java_multiple_files = true;
+option go_package = "decorcastle/stock";
+
+// Add options for field naming strategy
+option optimize_for = SPEED;
+
 message Stock {
   int32 id = 1;
-  int32 product_type_id = 2;
-  optional string product_name = 3;
-  string product_number = 4;
+  int32 product_type_id = 2 [json_name = "productTypeId"];
+  optional string product_name = 3 [json_name = "productName"];
+  string product_number = 4 [json_name = "productNumber"];
   optional string company = 5;
   optional string thickness = 6;
   optional string width = 7;
   optional string height = 8;
-  int32 amount_present = 9;
-  optional float unit_price = 10;
-  string created_at = 11;
-  string updated_at = 12;
-  optional string last_ordered_at = 13;
+  int32 amount_present = 9 [json_name = "amountPresent"];
+  optional float unit_price = 10 [json_name = "unitPrice"];
+  string created_at = 11 [json_name = "createdAt"];
+  string updated_at = 12 [json_name = "updatedAt"];
+  optional string last_ordered_at = 13 [json_name = "lastOrderedAt"];
 }
 
 message CreateStockRequest {
-  int32 product_type_id = 1;
-  optional string product_name = 2;
-  string product_number = 3;
+  int32 product_type_id = 1 [json_name = "productTypeId"];
+  optional string product_name = 2 [json_name = "productName"];
+  string product_number = 3 [json_name = "productNumber"];
   optional string company = 4;
   optional string thickness = 5;
   optional string width = 6;
   optional string height = 7;
-  int32 amount_present = 8;
-  optional float unit_price = 9;
+  int32 amount_present = 8 [json_name = "amountPresent"];
+  optional float unit_price = 9 [json_name = "unitPrice"];
 }
 
 message BatchCreateStockRequest {
@@ -35,13 +41,13 @@ message BatchCreateStockRequest {
 }
 
 message UpdateStockRequest {
-  optional int32 product_type_id = 1;
-  optional string product_name = 2;
-  optional string product_number = 3;
+  optional int32 product_type_id = 1 [json_name = "productTypeId"];
+  optional string product_name = 2 [json_name = "productName"];
+  optional string product_number = 3 [json_name = "productNumber"];
   optional string company = 4;
   optional string thickness = 5;
   optional string width = 6;
   optional string height = 7;
-  optional int32 amount_present = 8;
-  optional float unit_price = 9;
+  optional int32 amount_present = 8 [json_name = "amountPresent"];
+  optional float unit_price = 9 [json_name = "unitPrice"];
 }
