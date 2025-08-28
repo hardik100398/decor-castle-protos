@@ -1,5 +1,7 @@
 # Generated files
 /generated/
+/dist/
+*.egg-info/
 
 # Node.js
 node_modules/

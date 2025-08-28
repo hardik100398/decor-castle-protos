@@ -9,7 +9,8 @@
     "generate:py": "protoc --python_out=./generated/py/ ./*.proto",
     "generate": "yarn generate:ts && yarn generate:py",
     "build": "tsc",
-    "prepare": "yarn build"
+    "prepare": "yarn build",
+    "clean": "./clean.sh"
   },
   "devDependencies": {
     "protobufjs": "^7.2.4",

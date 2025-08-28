@@ -1,9 +1,14 @@
 README.md
 setup.py
+stock.proto
+decor_castle_protos/__init__.py
+decor_castle_protos/auth_pb2.py
+decor_castle_protos/stock_pb2.py
 decor_castle_protos.egg-info/PKG-INFO
 decor_castle_protos.egg-info/SOURCES.txt
 decor_castle_protos.egg-info/dependency_links.txt
 decor_castle_protos.egg-info/requires.txt
 decor_castle_protos.egg-info/top_level.txt
-generated/py/__init__.py
-generated/py/stock_pb2.py
+decor_castle_protos/__pycache__/__init__.cpython-312.pyc
+decor_castle_protos/__pycache__/auth_pb2.cpython-312.pyc
+decor_castle_protos/__pycache__/stock_pb2.cpython-312.pyc

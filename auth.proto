@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package decorcastle;
+
+option java_multiple_files = true;
+option go_package = "decorcastle/auth";
+
+// Add options for field naming strategy
+option optimize_for = SPEED;
+
+// User Login Request
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+// User Login Response
+message LoginResponse {
+  string message = 1;
+  string access_token = 2 [json_name = "accessToken"];
+  User user = 3;
+  int32 expires_in = 4 [json_name = "expiresIn"];
+}
+
+// User Information
+message User {
+  string id = 1;
+  string email = 2;
+  optional string created_at = 3 [json_name = "createdAt"];
+  optional string role = 4;
+}
+
+// Auth Status Response
+message AuthStatusResponse {
+  bool authenticated = 1;
+  User user = 2;
+  optional string error = 3;
+}
+
+// Logout Request
+message LogoutRequest {
+  optional string token = 1;
+}
+
+// General Response
+message AuthResponse {
+  string message = 1;
+  bool success = 2;
+  optional string warning = 3;
+}
