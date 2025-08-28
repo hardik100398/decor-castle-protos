@@ -54,4 +54,9 @@ setup(
     cmdclass={
         'compile_proto': CompileProtoCommand,
     },
+    include_package_data=True,
+    package_data={
+        "decor_castle_protos": ["*.py", "__pycache__/*"],
+    },
+    data_files=[('proto_files', ['stock.proto'])],
 )
