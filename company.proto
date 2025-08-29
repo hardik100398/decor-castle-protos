@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package decorcastle;
+
+option java_multiple_files = true;
+option go_package = "decorcastle/company";
+
+// Add options for field naming strategy
+option optimize_for = SPEED;
+
+message Company {
+  int32 id = 1;
+  string name = 2;
+  string created_at = 3 [json_name = "createdAt"];
+  string updated_at = 4 [json_name = "updatedAt"];
+}
+
+message CreateCompanyRequest {
+  string name = 1;
+}
+
+message UpdateCompanyRequest {
+  string name = 1;
+}

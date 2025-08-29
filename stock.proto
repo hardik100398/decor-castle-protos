@@ -13,7 +13,8 @@ message Stock {
   int32 product_type_id = 2 [json_name = "productTypeId"];
   optional string product_name = 3 [json_name = "productName"];
   string product_number = 4 [json_name = "productNumber"];
-  optional string company = 5;
+  optional string company = 5; // deprecated, use company_id instead
+  int32 company_id = 14 [json_name = "companyId"];
   optional string thickness = 6;
   optional string width = 7;
   optional string height = 8;
@@ -28,7 +29,8 @@ message CreateStockRequest {
   int32 product_type_id = 1 [json_name = "productTypeId"];
   optional string product_name = 2 [json_name = "productName"];
   string product_number = 3 [json_name = "productNumber"];
-  optional string company = 4;
+  optional string company = 4; // deprecated, use company_id instead
+  int32 company_id = 10 [json_name = "companyId"];
   optional string thickness = 5;
   optional string width = 6;
   optional string height = 7;
@@ -44,7 +46,8 @@ message UpdateStockRequest {
   optional int32 product_type_id = 1 [json_name = "productTypeId"];
   optional string product_name = 2 [json_name = "productName"];
   optional string product_number = 3 [json_name = "productNumber"];
-  optional string company = 4;
+  optional string company = 4; // deprecated, use company_id instead
+  optional int32 company_id = 10 [json_name = "companyId"];
   optional string thickness = 5;
   optional string width = 6;
   optional string height = 7;
