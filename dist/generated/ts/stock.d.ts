@@ -5,7 +5,9 @@ export interface Stock {
     productTypeId: number;
     productName?: string | undefined;
     productNumber: string;
+    /** deprecated, use company_id instead */
     company?: string | undefined;
+    companyId: number;
     thickness?: string | undefined;
     width?: string | undefined;
     height?: string | undefined;
@@ -19,7 +21,9 @@ export interface CreateStockRequest {
     productTypeId: number;
     productName?: string | undefined;
     productNumber: string;
+    /** deprecated, use company_id instead */
     company?: string | undefined;
+    companyId: number;
     thickness?: string | undefined;
     width?: string | undefined;
     height?: string | undefined;
@@ -33,7 +37,9 @@ export interface UpdateStockRequest {
     productTypeId?: number | undefined;
     productName?: string | undefined;
     productNumber?: string | undefined;
+    /** deprecated, use company_id instead */
     company?: string | undefined;
+    companyId?: number | undefined;
     thickness?: string | undefined;
     width?: string | undefined;
     height?: string | undefined;

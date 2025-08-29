@@ -49,6 +49,7 @@ function createBaseStock() {
         productName: undefined,
         productNumber: "",
         company: undefined,
+        companyId: 0,
         thickness: undefined,
         width: undefined,
         height: undefined,
@@ -75,6 +76,9 @@ exports.Stock = {
         }
         if (message.company !== undefined) {
             writer.uint32(42).string(message.company);
+        }
+        if (message.companyId !== 0) {
+            writer.uint32(112).int32(message.companyId);
         }
         if (message.thickness !== undefined) {
             writer.uint32(50).string(message.thickness);
@@ -139,6 +143,12 @@ exports.Stock = {
                     }
                     message.company = reader.string();
                     continue;
+                case 14:
+                    if (tag !== 112) {
+                        break;
+                    }
+                    message.companyId = reader.int32();
+                    continue;
                 case 6:
                     if (tag !== 50) {
                         break;
@@ -202,6 +212,7 @@ exports.Stock = {
             productName: isSet(object.productName) ? globalThis.String(object.productName) : undefined,
             productNumber: isSet(object.productNumber) ? globalThis.String(object.productNumber) : "",
             company: isSet(object.company) ? globalThis.String(object.company) : undefined,
+            companyId: isSet(object.companyId) ? globalThis.Number(object.companyId) : 0,
             thickness: isSet(object.thickness) ? globalThis.String(object.thickness) : undefined,
             width: isSet(object.width) ? globalThis.String(object.width) : undefined,
             height: isSet(object.height) ? globalThis.String(object.height) : undefined,
@@ -228,6 +239,9 @@ exports.Stock = {
         }
         if (message.company !== undefined) {
             obj.company = message.company;
+        }
+        if (message.companyId !== 0) {
+            obj.companyId = Math.round(message.companyId);
         }
         if (message.thickness !== undefined) {
             obj.thickness = message.thickness;
@@ -259,21 +273,22 @@ exports.Stock = {
         return exports.Stock.fromPartial(base !== null && base !== void 0 ? base : {});
     },
     fromPartial(object) {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
         const message = createBaseStock();
         message.id = (_a = object.id) !== null && _a !== void 0 ? _a : 0;
         message.productTypeId = (_b = object.productTypeId) !== null && _b !== void 0 ? _b : 0;
         message.productName = (_c = object.productName) !== null && _c !== void 0 ? _c : undefined;
         message.productNumber = (_d = object.productNumber) !== null && _d !== void 0 ? _d : "";
         message.company = (_e = object.company) !== null && _e !== void 0 ? _e : undefined;
-        message.thickness = (_f = object.thickness) !== null && _f !== void 0 ? _f : undefined;
-        message.width = (_g = object.width) !== null && _g !== void 0 ? _g : undefined;
-        message.height = (_h = object.height) !== null && _h !== void 0 ? _h : undefined;
-        message.amountPresent = (_j = object.amountPresent) !== null && _j !== void 0 ? _j : 0;
-        message.unitPrice = (_k = object.unitPrice) !== null && _k !== void 0 ? _k : undefined;
-        message.createdAt = (_l = object.createdAt) !== null && _l !== void 0 ? _l : "";
-        message.updatedAt = (_m = object.updatedAt) !== null && _m !== void 0 ? _m : "";
-        message.lastOrderedAt = (_o = object.lastOrderedAt) !== null && _o !== void 0 ? _o : undefined;
+        message.companyId = (_f = object.companyId) !== null && _f !== void 0 ? _f : 0;
+        message.thickness = (_g = object.thickness) !== null && _g !== void 0 ? _g : undefined;
+        message.width = (_h = object.width) !== null && _h !== void 0 ? _h : undefined;
+        message.height = (_j = object.height) !== null && _j !== void 0 ? _j : undefined;
+        message.amountPresent = (_k = object.amountPresent) !== null && _k !== void 0 ? _k : 0;
+        message.unitPrice = (_l = object.unitPrice) !== null && _l !== void 0 ? _l : undefined;
+        message.createdAt = (_m = object.createdAt) !== null && _m !== void 0 ? _m : "";
+        message.updatedAt = (_o = object.updatedAt) !== null && _o !== void 0 ? _o : "";
+        message.lastOrderedAt = (_p = object.lastOrderedAt) !== null && _p !== void 0 ? _p : undefined;
         return message;
     },
 };
@@ -283,6 +298,7 @@ function createBaseCreateStockRequest() {
         productName: undefined,
         productNumber: "",
         company: undefined,
+        companyId: 0,
         thickness: undefined,
         width: undefined,
         height: undefined,
@@ -303,6 +319,9 @@ exports.CreateStockRequest = {
         }
         if (message.company !== undefined) {
             writer.uint32(34).string(message.company);
+        }
+        if (message.companyId !== 0) {
+            writer.uint32(80).int32(message.companyId);
         }
         if (message.thickness !== undefined) {
             writer.uint32(42).string(message.thickness);
@@ -352,6 +371,12 @@ exports.CreateStockRequest = {
                     }
                     message.company = reader.string();
                     continue;
+                case 10:
+                    if (tag !== 80) {
+                        break;
+                    }
+                    message.companyId = reader.int32();
+                    continue;
                 case 5:
                     if (tag !== 42) {
                         break;
@@ -396,6 +421,7 @@ exports.CreateStockRequest = {
             productName: isSet(object.productName) ? globalThis.String(object.productName) : undefined,
             productNumber: isSet(object.productNumber) ? globalThis.String(object.productNumber) : "",
             company: isSet(object.company) ? globalThis.String(object.company) : undefined,
+            companyId: isSet(object.companyId) ? globalThis.Number(object.companyId) : 0,
             thickness: isSet(object.thickness) ? globalThis.String(object.thickness) : undefined,
             width: isSet(object.width) ? globalThis.String(object.width) : undefined,
             height: isSet(object.height) ? globalThis.String(object.height) : undefined,
@@ -416,6 +442,9 @@ exports.CreateStockRequest = {
         }
         if (message.company !== undefined) {
             obj.company = message.company;
+        }
+        if (message.companyId !== 0) {
+            obj.companyId = Math.round(message.companyId);
         }
         if (message.thickness !== undefined) {
             obj.thickness = message.thickness;
@@ -438,17 +467,18 @@ exports.CreateStockRequest = {
         return exports.CreateStockRequest.fromPartial(base !== null && base !== void 0 ? base : {});
     },
     fromPartial(object) {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
         const message = createBaseCreateStockRequest();
         message.productTypeId = (_a = object.productTypeId) !== null && _a !== void 0 ? _a : 0;
         message.productName = (_b = object.productName) !== null && _b !== void 0 ? _b : undefined;
         message.productNumber = (_c = object.productNumber) !== null && _c !== void 0 ? _c : "";
         message.company = (_d = object.company) !== null && _d !== void 0 ? _d : undefined;
-        message.thickness = (_e = object.thickness) !== null && _e !== void 0 ? _e : undefined;
-        message.width = (_f = object.width) !== null && _f !== void 0 ? _f : undefined;
-        message.height = (_g = object.height) !== null && _g !== void 0 ? _g : undefined;
-        message.amountPresent = (_h = object.amountPresent) !== null && _h !== void 0 ? _h : 0;
-        message.unitPrice = (_j = object.unitPrice) !== null && _j !== void 0 ? _j : undefined;
+        message.companyId = (_e = object.companyId) !== null && _e !== void 0 ? _e : 0;
+        message.thickness = (_f = object.thickness) !== null && _f !== void 0 ? _f : undefined;
+        message.width = (_g = object.width) !== null && _g !== void 0 ? _g : undefined;
+        message.height = (_h = object.height) !== null && _h !== void 0 ? _h : undefined;
+        message.amountPresent = (_j = object.amountPresent) !== null && _j !== void 0 ? _j : 0;
+        message.unitPrice = (_k = object.unitPrice) !== null && _k !== void 0 ? _k : undefined;
         return message;
     },
 };
@@ -514,6 +544,7 @@ function createBaseUpdateStockRequest() {
         productName: undefined,
         productNumber: undefined,
         company: undefined,
+        companyId: undefined,
         thickness: undefined,
         width: undefined,
         height: undefined,
@@ -534,6 +565,9 @@ exports.UpdateStockRequest = {
         }
         if (message.company !== undefined) {
             writer.uint32(34).string(message.company);
+        }
+        if (message.companyId !== undefined) {
+            writer.uint32(80).int32(message.companyId);
         }
         if (message.thickness !== undefined) {
             writer.uint32(42).string(message.thickness);
@@ -583,6 +617,12 @@ exports.UpdateStockRequest = {
                     }
                     message.company = reader.string();
                     continue;
+                case 10:
+                    if (tag !== 80) {
+                        break;
+                    }
+                    message.companyId = reader.int32();
+                    continue;
                 case 5:
                     if (tag !== 42) {
                         break;
@@ -627,6 +667,7 @@ exports.UpdateStockRequest = {
             productName: isSet(object.productName) ? globalThis.String(object.productName) : undefined,
             productNumber: isSet(object.productNumber) ? globalThis.String(object.productNumber) : undefined,
             company: isSet(object.company) ? globalThis.String(object.company) : undefined,
+            companyId: isSet(object.companyId) ? globalThis.Number(object.companyId) : undefined,
             thickness: isSet(object.thickness) ? globalThis.String(object.thickness) : undefined,
             width: isSet(object.width) ? globalThis.String(object.width) : undefined,
             height: isSet(object.height) ? globalThis.String(object.height) : undefined,
@@ -647,6 +688,9 @@ exports.UpdateStockRequest = {
         }
         if (message.company !== undefined) {
             obj.company = message.company;
+        }
+        if (message.companyId !== undefined) {
+            obj.companyId = Math.round(message.companyId);
         }
         if (message.thickness !== undefined) {
             obj.thickness = message.thickness;
@@ -669,17 +713,18 @@ exports.UpdateStockRequest = {
         return exports.UpdateStockRequest.fromPartial(base !== null && base !== void 0 ? base : {});
     },
     fromPartial(object) {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
         const message = createBaseUpdateStockRequest();
         message.productTypeId = (_a = object.productTypeId) !== null && _a !== void 0 ? _a : undefined;
         message.productName = (_b = object.productName) !== null && _b !== void 0 ? _b : undefined;
         message.productNumber = (_c = object.productNumber) !== null && _c !== void 0 ? _c : undefined;
         message.company = (_d = object.company) !== null && _d !== void 0 ? _d : undefined;
-        message.thickness = (_e = object.thickness) !== null && _e !== void 0 ? _e : undefined;
-        message.width = (_f = object.width) !== null && _f !== void 0 ? _f : undefined;
-        message.height = (_g = object.height) !== null && _g !== void 0 ? _g : undefined;
-        message.amountPresent = (_h = object.amountPresent) !== null && _h !== void 0 ? _h : undefined;
-        message.unitPrice = (_j = object.unitPrice) !== null && _j !== void 0 ? _j : undefined;
+        message.companyId = (_e = object.companyId) !== null && _e !== void 0 ? _e : undefined;
+        message.thickness = (_f = object.thickness) !== null && _f !== void 0 ? _f : undefined;
+        message.width = (_g = object.width) !== null && _g !== void 0 ? _g : undefined;
+        message.height = (_h = object.height) !== null && _h !== void 0 ? _h : undefined;
+        message.amountPresent = (_j = object.amountPresent) !== null && _j !== void 0 ? _j : undefined;
+        message.unitPrice = (_k = object.unitPrice) !== null && _k !== void 0 ? _k : undefined;
         return message;
     },
 };
