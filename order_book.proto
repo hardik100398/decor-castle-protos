@@ -1,0 +1,144 @@
+syntax = "proto3";
+
+package decorcastle;
+
+option java_multiple_files = true;
+option go_package = "decorcastle/orderbook";
+
+// Add options for field naming strategy
+option optimize_for = SPEED;
+
+// Order status enum
+enum OrderStatus {
+  RECEIVED = 0;
+  CONFIRMED = 1;
+  PROCESSING = 2;
+  CUTTING = 3;
+  FABRICATING = 4;
+  QUALITY_CHECK = 5;
+  READY_FOR_DISPATCH = 6;
+  DISPATCHED = 7;
+  IN_TRANSIT = 8;
+  DELIVERED = 9;
+  PARTIALLY_DELIVERED = 10;
+  COMPLETED = 11;
+  INVOICED = 12;
+  ON_HOLD = 13;
+  CANCELLED = 14;
+  RETURNED = 15;
+  REFUNDED = 16;
+}
+
+// Order Book message
+message OrderBook {
+  int32 id = 1;
+  string order_number = 2 [json_name = "orderNumber"];
+  optional string customer_order_number = 3 [json_name = "customerOrderNumber"];
+  string customer_name = 4 [json_name = "customerName"];
+  optional string customer_contact = 5 [json_name = "customerContact"];
+  optional string customer_email = 6 [json_name = "customerEmail"];
+  optional string customer_address = 7 [json_name = "customerAddress"];
+  optional string delivery_address = 8 [json_name = "deliveryAddress"];
+  optional string delivery_contact = 9 [json_name = "deliveryContact"];
+  optional string delivery_date = 10 [json_name = "deliveryDate"];
+  string product_description = 11 [json_name = "productDescription"];
+  optional string product_type = 12 [json_name = "productType"];
+  optional string specifications = 13;
+  int32 quantity = 14;
+  string unit = 15;
+  optional float unit_price = 16 [json_name = "unitPrice"];
+  optional float total_amount = 17 [json_name = "totalAmount"];
+  OrderStatus status = 18;
+  string priority = 19;
+  string order_date = 20 [json_name = "orderDate"];
+  optional string expected_completion_date = 21 [json_name = "expectedCompletionDate"];
+  optional string actual_completion_date = 22 [json_name = "actualCompletionDate"];
+  optional string dispatch_date = 23 [json_name = "dispatchDate"];
+  optional string notes = 25;
+  optional string special_instructions = 26 [json_name = "specialInstructions"];
+  optional string tally_voucher_number = 27 [json_name = "tallyVoucherNumber"];
+  bool is_billed_in_tally = 28 [json_name = "isBilledInTally"];
+  optional string tally_bill_date = 29 [json_name = "tallyBillDate"];
+  optional int32 stock_id = 30 [json_name = "stockId"];
+  optional int32 creditor_id = 31 [json_name = "creditorId"];
+  string created_at = 32 [json_name = "createdAt"];
+  string updated_at = 33 [json_name = "updatedAt"];
+}
+
+// Create Order Book Request
+message CreateOrderBookRequest {
+  string order_number = 1 [json_name = "orderNumber"];
+  optional string customer_order_number = 2 [json_name = "customerOrderNumber"];
+  string customer_name = 3 [json_name = "customerName"];
+  optional string customer_contact = 4 [json_name = "customerContact"];
+  optional string customer_email = 5 [json_name = "customerEmail"];
+  optional string customer_address = 6 [json_name = "customerAddress"];
+  optional string delivery_address = 7 [json_name = "deliveryAddress"];
+  optional string delivery_contact = 8 [json_name = "deliveryContact"];
+  optional string delivery_date = 9 [json_name = "deliveryDate"];
+  string product_description = 10 [json_name = "productDescription"];
+  optional string product_type = 11 [json_name = "productType"];
+  optional string specifications = 12;
+  int32 quantity = 13;
+  string unit = 14;
+  optional float unit_price = 15 [json_name = "unitPrice"];
+  optional float total_amount = 16 [json_name = "totalAmount"];
+  string priority = 17;
+  optional string expected_completion_date = 18 [json_name = "expectedCompletionDate"];
+  optional string notes = 19;
+  optional string special_instructions = 20 [json_name = "specialInstructions"];
+  optional int32 stock_id = 21 [json_name = "stockId"];
+  optional int32 creditor_id = 22 [json_name = "creditorId"];
+}
+
+// Update Order Book Request
+message UpdateOrderBookRequest {
+  optional string order_number = 1 [json_name = "orderNumber"];
+  optional string customer_order_number = 2 [json_name = "customerOrderNumber"];
+  optional string customer_name = 3 [json_name = "customerName"];
+  optional string customer_contact = 4 [json_name = "customerContact"];
+  optional string customer_email = 5 [json_name = "customerEmail"];
+  optional string customer_address = 6 [json_name = "customerAddress"];
+  optional string delivery_address = 7 [json_name = "deliveryAddress"];
+  optional string delivery_contact = 8 [json_name = "deliveryContact"];
+  optional string delivery_date = 9 [json_name = "deliveryDate"];
+  optional string product_description = 10 [json_name = "productDescription"];
+  optional string product_type = 11 [json_name = "productType"];
+  optional string specifications = 12;
+  optional int32 quantity = 13;
+  optional string unit = 14;
+  optional float unit_price = 15 [json_name = "unitPrice"];
+  optional float total_amount = 16 [json_name = "totalAmount"];
+  optional OrderStatus status = 17;
+  optional string priority = 18;
+  optional string expected_completion_date = 19 [json_name = "expectedCompletionDate"];
+  optional string actual_completion_date = 20 [json_name = "actualCompletionDate"];
+  optional string dispatch_date = 21 [json_name = "dispatchDate"];
+  optional string notes = 22;
+  optional string special_instructions = 23 [json_name = "specialInstructions"];
+  optional string tally_voucher_number = 24 [json_name = "tallyVoucherNumber"];
+  optional bool is_billed_in_tally = 25 [json_name = "isBilledInTally"];
+  optional string tally_bill_date = 26 [json_name = "tallyBillDate"];
+  optional int32 stock_id = 27 [json_name = "stockId"];
+  optional int32 creditor_id = 28 [json_name = "creditorId"];
+}
+
+// Order Status Update Request
+message OrderStatusUpdateRequest {
+  OrderStatus status = 1;
+  optional string notes = 2;
+  optional string actual_completion_date = 3 [json_name = "actualCompletionDate"];
+  optional string dispatch_date = 4 [json_name = "dispatchDate"];
+  optional string delivery_date = 5 [json_name = "deliveryDate"];
+}
+
+// Order Book Summary
+message OrderBookSummary {
+  int32 total_orders = 1 [json_name = "totalOrders"];
+  map<string, int32> orders_by_status = 2 [json_name = "ordersByStatus"];
+  map<string, int32> orders_by_priority = 3 [json_name = "ordersByPriority"];
+  int32 overdue_orders = 4 [json_name = "overdueOrders"];
+  int32 completed_orders = 5 [json_name = "completedOrders"];
+  int32 pending_orders = 6 [json_name = "pendingOrders"];
+  float total_value = 7 [json_name = "totalValue"];
+}

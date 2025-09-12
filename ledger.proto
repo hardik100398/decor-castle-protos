@@ -1,0 +1,130 @@
+syntax = "proto3";
+
+package decorcastle;
+
+option java_multiple_files = true;
+option go_package = "decorcastle/ledger";
+
+// Add options for field naming strategy
+option optimize_for = SPEED;
+
+// Account types enum
+enum AccountType {
+  CREDITOR = 0;
+  DEBTOR = 1;
+  CASH = 2;
+  BANK = 3;
+  EXPENSE = 4;
+  INCOME = 5;
+  ASSET = 6;
+  LIABILITY = 7;
+  EQUITY = 8;
+}
+
+// Transaction types enum
+enum TransactionType {
+  DEBIT = 0;
+  CREDIT = 1;
+  TRANSFER = 2;
+}
+
+// Ledger Account message
+message LedgerAccount {
+  int32 id = 1;
+  string name = 2;
+  AccountType account_type = 3 [json_name = "accountType"];
+  optional string contact = 4;
+  optional string email = 5;
+  optional string reference = 6;
+  optional string address = 7;
+  float opening_balance = 8 [json_name = "openingBalance"];
+  float current_balance = 9 [json_name = "currentBalance"];
+  bool is_active = 10 [json_name = "isActive"];
+  bool is_consignee = 11 [json_name = "isConsignee"];
+  string created_at = 12 [json_name = "createdAt"];
+  string updated_at = 13 [json_name = "updatedAt"];
+}
+
+// Ledger Transaction message
+message LedgerTransaction {
+  int32 id = 1;
+  optional int32 debit_account_id = 2 [json_name = "debitAccountId"];
+  optional int32 credit_account_id = 3 [json_name = "creditAccountId"];
+  float amount = 4;
+  TransactionType transaction_type = 5 [json_name = "transactionType"];
+  optional string description = 6;
+  optional string reference_number = 7 [json_name = "referenceNumber"];
+  optional string voucher_number = 8 [json_name = "voucherNumber"];
+  optional string voucher_date = 9 [json_name = "voucherDate"];
+  string created_at = 10 [json_name = "createdAt"];
+  string updated_at = 11 [json_name = "updatedAt"];
+}
+
+// Create Ledger Account Request
+message CreateLedgerAccountRequest {
+  string name = 1;
+  AccountType account_type = 2 [json_name = "accountType"];
+  optional string contact = 3;
+  optional string email = 4;
+  optional string reference = 5;
+  optional string address = 6;
+  float opening_balance = 7 [json_name = "openingBalance"];
+  bool is_active = 8 [json_name = "isActive"];
+  bool is_consignee = 9 [json_name = "isConsignee"];
+}
+
+// Update Ledger Account Request
+message UpdateLedgerAccountRequest {
+  optional string name = 1;
+  optional AccountType account_type = 2 [json_name = "accountType"];
+  optional string contact = 3;
+  optional string email = 4;
+  optional string reference = 5;
+  optional string address = 6;
+  optional float opening_balance = 7 [json_name = "openingBalance"];
+  optional bool is_active = 8 [json_name = "isActive"];
+  optional bool is_consignee = 9 [json_name = "isConsignee"];
+}
+
+// Create Ledger Transaction Request
+message CreateLedgerTransactionRequest {
+  optional int32 debit_account_id = 1 [json_name = "debitAccountId"];
+  optional int32 credit_account_id = 2 [json_name = "creditAccountId"];
+  float amount = 3;
+  TransactionType transaction_type = 4 [json_name = "transactionType"];
+  optional string description = 5;
+  optional string reference_number = 6 [json_name = "referenceNumber"];
+  optional string voucher_number = 7 [json_name = "voucherNumber"];
+  optional string voucher_date = 8 [json_name = "voucherDate"];
+}
+
+// Update Ledger Transaction Request
+message UpdateLedgerTransactionRequest {
+  optional int32 debit_account_id = 1 [json_name = "debitAccountId"];
+  optional int32 credit_account_id = 2 [json_name = "creditAccountId"];
+  optional float amount = 3;
+  optional TransactionType transaction_type = 4 [json_name = "transactionType"];
+  optional string description = 5;
+  optional string reference_number = 6 [json_name = "referenceNumber"];
+  optional string voucher_number = 7 [json_name = "voucherNumber"];
+  optional string voucher_date = 8 [json_name = "voucherDate"];
+}
+
+// Ledger Account Summary
+message LedgerAccountSummary {
+  int32 total_accounts = 1 [json_name = "totalAccounts"];
+  map<string, int32> accounts_by_type = 2 [json_name = "accountsByType"];
+  float total_debit_balance = 3 [json_name = "totalDebitBalance"];
+  float total_credit_balance = 4 [json_name = "totalCreditBalance"];
+  int32 active_accounts = 5 [json_name = "activeAccounts"];
+  int32 inactive_accounts = 6 [json_name = "inactiveAccounts"];
+}
+
+// Ledger Transaction Summary
+message LedgerTransactionSummary {
+  int32 total_transactions = 1 [json_name = "totalTransactions"];
+  float total_debit_amount = 2 [json_name = "totalDebitAmount"];
+  float total_credit_amount = 3 [json_name = "totalCreditAmount"];
+  map<string, int32> transactions_by_type = 4 [json_name = "transactionsByType"];
+  map<string, int32> transactions_by_month = 5 [json_name = "transactionsByMonth"];
+}
