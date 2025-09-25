@@ -23,6 +23,15 @@ message Stock {
   string created_at = 11 [json_name = "createdAt"];
   string updated_at = 12 [json_name = "updatedAt"];
   optional string last_ordered_at = 13 [json_name = "lastOrderedAt"];
+  
+  // Adhesive-specific fields
+  optional float weight = 15; // Weight in kg for adhesive products
+  optional string pack_size = 16 [json_name = "packSize"]; // Pack size description (e.g., '500ml', '1kg')
+  
+  // Hardware-specific fields
+  optional string color = 17; // Color of hardware (e.g., 'Brass', 'Chrome', 'Black')
+  optional string alloy_type = 18 [json_name = "alloyType"]; // Alloy type (e.g., 'Stainless Steel', 'Aluminum')
+  optional string hardware_category = 19 [json_name = "hardwareCategory"]; // Specific hardware category (e.g., 'wardrobe', 'kitchen', 'general')
 }
 
 message CreateStockRequest {
@@ -36,6 +45,15 @@ message CreateStockRequest {
   optional string height = 7;
   int32 amount_present = 8 [json_name = "amountPresent"];
   optional float unit_price = 9 [json_name = "unitPrice"];
+  
+  // Adhesive-specific fields
+  optional float weight = 11; // Weight in kg for adhesive products
+  optional string pack_size = 12 [json_name = "packSize"]; // Pack size description (e.g., '500ml', '1kg')
+  
+  // Hardware-specific fields
+  optional string color = 13; // Color of hardware (e.g., 'Brass', 'Chrome', 'Black')
+  optional string alloy_type = 14 [json_name = "alloyType"]; // Alloy type (e.g., 'Stainless Steel', 'Aluminum')
+  optional string hardware_category = 15 [json_name = "hardwareCategory"]; // Specific hardware category (e.g., 'wardrobe', 'kitchen', 'general')
 }
 
 message BatchCreateStockRequest {
@@ -53,4 +71,13 @@ message UpdateStockRequest {
   optional string height = 7;
   optional int32 amount_present = 8 [json_name = "amountPresent"];
   optional float unit_price = 9 [json_name = "unitPrice"];
+  
+  // Adhesive-specific fields
+  optional float weight = 11; // Weight in kg for adhesive products
+  optional string pack_size = 12 [json_name = "packSize"]; // Pack size description (e.g., '500ml', '1kg')
+  
+  // Hardware-specific fields
+  optional string color = 13; // Color of hardware (e.g., 'Brass', 'Chrome', 'Black')
+  optional string alloy_type = 14 [json_name = "alloyType"]; // Alloy type (e.g., 'Stainless Steel', 'Aluminum')
+  optional string hardware_category = 15 [json_name = "hardwareCategory"]; // Specific hardware category (e.g., 'wardrobe', 'kitchen', 'general')
 }
