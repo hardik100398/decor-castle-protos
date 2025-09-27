@@ -10,6 +10,7 @@
     "generate": "yarn generate:ts && yarn generate:py",
     "build": "tsc",
     "prepare": "yarn build",
+    "prepublishOnly": "yarn generate && yarn build",
     "clean": "./clean.sh"
   },
   "devDependencies": {
