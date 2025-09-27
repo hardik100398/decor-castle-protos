@@ -58,6 +58,11 @@ function createBaseStock() {
         createdAt: "",
         updatedAt: "",
         lastOrderedAt: undefined,
+        weight: undefined,
+        packSize: undefined,
+        color: undefined,
+        alloyType: undefined,
+        hardwareCategory: undefined,
     };
 }
 exports.Stock = {
@@ -103,6 +108,21 @@ exports.Stock = {
         }
         if (message.lastOrderedAt !== undefined) {
             writer.uint32(106).string(message.lastOrderedAt);
+        }
+        if (message.weight !== undefined) {
+            writer.uint32(125).float(message.weight);
+        }
+        if (message.packSize !== undefined) {
+            writer.uint32(130).string(message.packSize);
+        }
+        if (message.color !== undefined) {
+            writer.uint32(138).string(message.color);
+        }
+        if (message.alloyType !== undefined) {
+            writer.uint32(146).string(message.alloyType);
+        }
+        if (message.hardwareCategory !== undefined) {
+            writer.uint32(154).string(message.hardwareCategory);
         }
         return writer;
     },
@@ -197,6 +217,36 @@ exports.Stock = {
                     }
                     message.lastOrderedAt = reader.string();
                     continue;
+                case 15:
+                    if (tag !== 125) {
+                        break;
+                    }
+                    message.weight = reader.float();
+                    continue;
+                case 16:
+                    if (tag !== 130) {
+                        break;
+                    }
+                    message.packSize = reader.string();
+                    continue;
+                case 17:
+                    if (tag !== 138) {
+                        break;
+                    }
+                    message.color = reader.string();
+                    continue;
+                case 18:
+                    if (tag !== 146) {
+                        break;
+                    }
+                    message.alloyType = reader.string();
+                    continue;
+                case 19:
+                    if (tag !== 154) {
+                        break;
+                    }
+                    message.hardwareCategory = reader.string();
+                    continue;
             }
             if ((tag & 7) === 4 || tag === 0) {
                 break;
@@ -221,6 +271,11 @@ exports.Stock = {
             createdAt: isSet(object.createdAt) ? globalThis.String(object.createdAt) : "",
             updatedAt: isSet(object.updatedAt) ? globalThis.String(object.updatedAt) : "",
             lastOrderedAt: isSet(object.lastOrderedAt) ? globalThis.String(object.lastOrderedAt) : undefined,
+            weight: isSet(object.weight) ? globalThis.Number(object.weight) : undefined,
+            packSize: isSet(object.packSize) ? globalThis.String(object.packSize) : undefined,
+            color: isSet(object.color) ? globalThis.String(object.color) : undefined,
+            alloyType: isSet(object.alloyType) ? globalThis.String(object.alloyType) : undefined,
+            hardwareCategory: isSet(object.hardwareCategory) ? globalThis.String(object.hardwareCategory) : undefined,
         };
     },
     toJSON(message) {
@@ -267,13 +322,28 @@ exports.Stock = {
         if (message.lastOrderedAt !== undefined) {
             obj.lastOrderedAt = message.lastOrderedAt;
         }
+        if (message.weight !== undefined) {
+            obj.weight = message.weight;
+        }
+        if (message.packSize !== undefined) {
+            obj.packSize = message.packSize;
+        }
+        if (message.color !== undefined) {
+            obj.color = message.color;
+        }
+        if (message.alloyType !== undefined) {
+            obj.alloyType = message.alloyType;
+        }
+        if (message.hardwareCategory !== undefined) {
+            obj.hardwareCategory = message.hardwareCategory;
+        }
         return obj;
     },
     create(base) {
         return exports.Stock.fromPartial(base !== null && base !== void 0 ? base : {});
     },
     fromPartial(object) {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u;
         const message = createBaseStock();
         message.id = (_a = object.id) !== null && _a !== void 0 ? _a : 0;
         message.productTypeId = (_b = object.productTypeId) !== null && _b !== void 0 ? _b : 0;
@@ -289,6 +359,11 @@ exports.Stock = {
         message.createdAt = (_m = object.createdAt) !== null && _m !== void 0 ? _m : "";
         message.updatedAt = (_o = object.updatedAt) !== null && _o !== void 0 ? _o : "";
         message.lastOrderedAt = (_p = object.lastOrderedAt) !== null && _p !== void 0 ? _p : undefined;
+        message.weight = (_q = object.weight) !== null && _q !== void 0 ? _q : undefined;
+        message.packSize = (_r = object.packSize) !== null && _r !== void 0 ? _r : undefined;
+        message.color = (_s = object.color) !== null && _s !== void 0 ? _s : undefined;
+        message.alloyType = (_t = object.alloyType) !== null && _t !== void 0 ? _t : undefined;
+        message.hardwareCategory = (_u = object.hardwareCategory) !== null && _u !== void 0 ? _u : undefined;
         return message;
     },
 };
@@ -304,6 +379,11 @@ function createBaseCreateStockRequest() {
         height: undefined,
         amountPresent: 0,
         unitPrice: undefined,
+        weight: undefined,
+        packSize: undefined,
+        color: undefined,
+        alloyType: undefined,
+        hardwareCategory: undefined,
     };
 }
 exports.CreateStockRequest = {
@@ -337,6 +417,21 @@ exports.CreateStockRequest = {
         }
         if (message.unitPrice !== undefined) {
             writer.uint32(77).float(message.unitPrice);
+        }
+        if (message.weight !== undefined) {
+            writer.uint32(93).float(message.weight);
+        }
+        if (message.packSize !== undefined) {
+            writer.uint32(98).string(message.packSize);
+        }
+        if (message.color !== undefined) {
+            writer.uint32(106).string(message.color);
+        }
+        if (message.alloyType !== undefined) {
+            writer.uint32(114).string(message.alloyType);
+        }
+        if (message.hardwareCategory !== undefined) {
+            writer.uint32(122).string(message.hardwareCategory);
         }
         return writer;
     },
@@ -407,6 +502,36 @@ exports.CreateStockRequest = {
                     }
                     message.unitPrice = reader.float();
                     continue;
+                case 11:
+                    if (tag !== 93) {
+                        break;
+                    }
+                    message.weight = reader.float();
+                    continue;
+                case 12:
+                    if (tag !== 98) {
+                        break;
+                    }
+                    message.packSize = reader.string();
+                    continue;
+                case 13:
+                    if (tag !== 106) {
+                        break;
+                    }
+                    message.color = reader.string();
+                    continue;
+                case 14:
+                    if (tag !== 114) {
+                        break;
+                    }
+                    message.alloyType = reader.string();
+                    continue;
+                case 15:
+                    if (tag !== 122) {
+                        break;
+                    }
+                    message.hardwareCategory = reader.string();
+                    continue;
             }
             if ((tag & 7) === 4 || tag === 0) {
                 break;
@@ -427,6 +552,11 @@ exports.CreateStockRequest = {
             height: isSet(object.height) ? globalThis.String(object.height) : undefined,
             amountPresent: isSet(object.amountPresent) ? globalThis.Number(object.amountPresent) : 0,
             unitPrice: isSet(object.unitPrice) ? globalThis.Number(object.unitPrice) : undefined,
+            weight: isSet(object.weight) ? globalThis.Number(object.weight) : undefined,
+            packSize: isSet(object.packSize) ? globalThis.String(object.packSize) : undefined,
+            color: isSet(object.color) ? globalThis.String(object.color) : undefined,
+            alloyType: isSet(object.alloyType) ? globalThis.String(object.alloyType) : undefined,
+            hardwareCategory: isSet(object.hardwareCategory) ? globalThis.String(object.hardwareCategory) : undefined,
         };
     },
     toJSON(message) {
@@ -461,13 +591,28 @@ exports.CreateStockRequest = {
         if (message.unitPrice !== undefined) {
             obj.unitPrice = message.unitPrice;
         }
+        if (message.weight !== undefined) {
+            obj.weight = message.weight;
+        }
+        if (message.packSize !== undefined) {
+            obj.packSize = message.packSize;
+        }
+        if (message.color !== undefined) {
+            obj.color = message.color;
+        }
+        if (message.alloyType !== undefined) {
+            obj.alloyType = message.alloyType;
+        }
+        if (message.hardwareCategory !== undefined) {
+            obj.hardwareCategory = message.hardwareCategory;
+        }
         return obj;
     },
     create(base) {
         return exports.CreateStockRequest.fromPartial(base !== null && base !== void 0 ? base : {});
     },
     fromPartial(object) {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q;
         const message = createBaseCreateStockRequest();
         message.productTypeId = (_a = object.productTypeId) !== null && _a !== void 0 ? _a : 0;
         message.productName = (_b = object.productName) !== null && _b !== void 0 ? _b : undefined;
@@ -479,6 +624,11 @@ exports.CreateStockRequest = {
         message.height = (_h = object.height) !== null && _h !== void 0 ? _h : undefined;
         message.amountPresent = (_j = object.amountPresent) !== null && _j !== void 0 ? _j : 0;
         message.unitPrice = (_k = object.unitPrice) !== null && _k !== void 0 ? _k : undefined;
+        message.weight = (_l = object.weight) !== null && _l !== void 0 ? _l : undefined;
+        message.packSize = (_m = object.packSize) !== null && _m !== void 0 ? _m : undefined;
+        message.color = (_o = object.color) !== null && _o !== void 0 ? _o : undefined;
+        message.alloyType = (_p = object.alloyType) !== null && _p !== void 0 ? _p : undefined;
+        message.hardwareCategory = (_q = object.hardwareCategory) !== null && _q !== void 0 ? _q : undefined;
         return message;
     },
 };
@@ -550,6 +700,11 @@ function createBaseUpdateStockRequest() {
         height: undefined,
         amountPresent: undefined,
         unitPrice: undefined,
+        weight: undefined,
+        packSize: undefined,
+        color: undefined,
+        alloyType: undefined,
+        hardwareCategory: undefined,
     };
 }
 exports.UpdateStockRequest = {
@@ -583,6 +738,21 @@ exports.UpdateStockRequest = {
         }
         if (message.unitPrice !== undefined) {
             writer.uint32(77).float(message.unitPrice);
+        }
+        if (message.weight !== undefined) {
+            writer.uint32(93).float(message.weight);
+        }
+        if (message.packSize !== undefined) {
+            writer.uint32(98).string(message.packSize);
+        }
+        if (message.color !== undefined) {
+            writer.uint32(106).string(message.color);
+        }
+        if (message.alloyType !== undefined) {
+            writer.uint32(114).string(message.alloyType);
+        }
+        if (message.hardwareCategory !== undefined) {
+            writer.uint32(122).string(message.hardwareCategory);
         }
         return writer;
     },
@@ -653,6 +823,36 @@ exports.UpdateStockRequest = {
                     }
                     message.unitPrice = reader.float();
                     continue;
+                case 11:
+                    if (tag !== 93) {
+                        break;
+                    }
+                    message.weight = reader.float();
+                    continue;
+                case 12:
+                    if (tag !== 98) {
+                        break;
+                    }
+                    message.packSize = reader.string();
+                    continue;
+                case 13:
+                    if (tag !== 106) {
+                        break;
+                    }
+                    message.color = reader.string();
+                    continue;
+                case 14:
+                    if (tag !== 114) {
+                        break;
+                    }
+                    message.alloyType = reader.string();
+                    continue;
+                case 15:
+                    if (tag !== 122) {
+                        break;
+                    }
+                    message.hardwareCategory = reader.string();
+                    continue;
             }
             if ((tag & 7) === 4 || tag === 0) {
                 break;
@@ -673,6 +873,11 @@ exports.UpdateStockRequest = {
             height: isSet(object.height) ? globalThis.String(object.height) : undefined,
             amountPresent: isSet(object.amountPresent) ? globalThis.Number(object.amountPresent) : undefined,
             unitPrice: isSet(object.unitPrice) ? globalThis.Number(object.unitPrice) : undefined,
+            weight: isSet(object.weight) ? globalThis.Number(object.weight) : undefined,
+            packSize: isSet(object.packSize) ? globalThis.String(object.packSize) : undefined,
+            color: isSet(object.color) ? globalThis.String(object.color) : undefined,
+            alloyType: isSet(object.alloyType) ? globalThis.String(object.alloyType) : undefined,
+            hardwareCategory: isSet(object.hardwareCategory) ? globalThis.String(object.hardwareCategory) : undefined,
         };
     },
     toJSON(message) {
@@ -707,13 +912,28 @@ exports.UpdateStockRequest = {
         if (message.unitPrice !== undefined) {
             obj.unitPrice = message.unitPrice;
         }
+        if (message.weight !== undefined) {
+            obj.weight = message.weight;
+        }
+        if (message.packSize !== undefined) {
+            obj.packSize = message.packSize;
+        }
+        if (message.color !== undefined) {
+            obj.color = message.color;
+        }
+        if (message.alloyType !== undefined) {
+            obj.alloyType = message.alloyType;
+        }
+        if (message.hardwareCategory !== undefined) {
+            obj.hardwareCategory = message.hardwareCategory;
+        }
         return obj;
     },
     create(base) {
         return exports.UpdateStockRequest.fromPartial(base !== null && base !== void 0 ? base : {});
     },
     fromPartial(object) {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q;
         const message = createBaseUpdateStockRequest();
         message.productTypeId = (_a = object.productTypeId) !== null && _a !== void 0 ? _a : undefined;
         message.productName = (_b = object.productName) !== null && _b !== void 0 ? _b : undefined;
@@ -725,6 +945,11 @@ exports.UpdateStockRequest = {
         message.height = (_h = object.height) !== null && _h !== void 0 ? _h : undefined;
         message.amountPresent = (_j = object.amountPresent) !== null && _j !== void 0 ? _j : undefined;
         message.unitPrice = (_k = object.unitPrice) !== null && _k !== void 0 ? _k : undefined;
+        message.weight = (_l = object.weight) !== null && _l !== void 0 ? _l : undefined;
+        message.packSize = (_m = object.packSize) !== null && _m !== void 0 ? _m : undefined;
+        message.color = (_o = object.color) !== null && _o !== void 0 ? _o : undefined;
+        message.alloyType = (_p = object.alloyType) !== null && _p !== void 0 ? _p : undefined;
+        message.hardwareCategory = (_q = object.hardwareCategory) !== null && _q !== void 0 ? _q : undefined;
         return message;
     },
 };

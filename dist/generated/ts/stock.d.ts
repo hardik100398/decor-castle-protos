@@ -16,6 +16,16 @@ export interface Stock {
     createdAt: string;
     updatedAt: string;
     lastOrderedAt?: string | undefined;
+    /** Adhesive-specific fields */
+    weight?: number | undefined;
+    /** Pack size description (e.g., '500ml', '1kg') */
+    packSize?: string | undefined;
+    /** Hardware-specific fields */
+    color?: string | undefined;
+    /** Alloy type (e.g., 'Stainless Steel', 'Aluminum') */
+    alloyType?: string | undefined;
+    /** Specific hardware category (e.g., 'wardrobe', 'kitchen', 'general') */
+    hardwareCategory?: string | undefined;
 }
 export interface CreateStockRequest {
     productTypeId: number;
@@ -29,6 +39,16 @@ export interface CreateStockRequest {
     height?: string | undefined;
     amountPresent: number;
     unitPrice?: number | undefined;
+    /** Adhesive-specific fields */
+    weight?: number | undefined;
+    /** Pack size description (e.g., '500ml', '1kg') */
+    packSize?: string | undefined;
+    /** Hardware-specific fields */
+    color?: string | undefined;
+    /** Alloy type (e.g., 'Stainless Steel', 'Aluminum') */
+    alloyType?: string | undefined;
+    /** Specific hardware category (e.g., 'wardrobe', 'kitchen', 'general') */
+    hardwareCategory?: string | undefined;
 }
 export interface BatchCreateStockRequest {
     items: CreateStockRequest[];
@@ -45,6 +65,16 @@ export interface UpdateStockRequest {
     height?: string | undefined;
     amountPresent?: number | undefined;
     unitPrice?: number | undefined;
+    /** Adhesive-specific fields */
+    weight?: number | undefined;
+    /** Pack size description (e.g., '500ml', '1kg') */
+    packSize?: string | undefined;
+    /** Hardware-specific fields */
+    color?: string | undefined;
+    /** Alloy type (e.g., 'Stainless Steel', 'Aluminum') */
+    alloyType?: string | undefined;
+    /** Specific hardware category (e.g., 'wardrobe', 'kitchen', 'general') */
+    hardwareCategory?: string | undefined;
 }
 export declare const Stock: {
     encode(message: Stock, writer?: _m0.Writer): _m0.Writer;
