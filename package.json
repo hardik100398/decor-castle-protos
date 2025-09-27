@@ -13,10 +13,12 @@
     "prepublishOnly": "yarn generate && yarn build",
     "clean": "./clean.sh"
   },
+  "dependencies": {
+    "typescript": "^5.1.6"
+  },
   "devDependencies": {
     "protobufjs": "^7.2.4",
-    "ts-proto": "^1.156.3",
-    "typescript": "^5.1.6"
+    "ts-proto": "^1.156.3"
   },
   "keywords": [
     "protobuf",
